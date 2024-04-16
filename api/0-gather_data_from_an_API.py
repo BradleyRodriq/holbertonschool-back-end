@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """ returns to-do list information about employee ID """
-import requests
-import sys
+from requests import get
+from sys import argv
 
 if __name__ == '__main__':
     APIurl = "https://jsonplaceholder.typicode.com"
-    employee = requests.get(APIurl + "/users/{}".format(sys.argv[1])).json()
-    to_do_list = requests.get(APIurl + "/todos", params={
-        "userId": sys.argv[1]}).json()
+    employee = get(APIurl + "/users/{}".format(argv[1])).json()
+    to_do_list = get(APIurl + "/todos", params={
+        "userId": argv[1]}).json()
 
     finished = [i.get("title") for i in to_do_list if i.get(
         "completed") is True]
