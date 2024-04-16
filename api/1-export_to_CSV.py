@@ -13,4 +13,5 @@ if __name__ == '__main__':
 
     with open("{}.csv".format(argv[1]), "w", newline="") as csvfile:
         writeCSV = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        [writeCSV.writerow([argv[1], username, i.get("completed"), i.get("title")]) for i in to_do_list]
+        [writeCSV.writerow([argv[1], username, i.get("completed"),
+                            i.get("title")]) for i in to_do_list]
